@@ -18,13 +18,6 @@ spec:
           service:
             spec:
               type: NodePort
-        
-        # NEW: Sleep Mode Configuration
-        sleepMode:
-          enabled: true
-          # Sleep after 2 minutes of inactivity
-          autoSleep:
-            afterActivity: 2m
   destination:
     server: https://kubernetes.default.svc
     namespace: team-a
