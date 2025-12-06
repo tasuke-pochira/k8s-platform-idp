@@ -10,17 +10,13 @@ spec:
   source:
     repoURL: https://charts.loft.sh
     chart: vcluster
-    targetRevision: 0.20.0
+    # CHANGED: Downgraded to 0.19.0 to match the config
+    targetRevision: 0.19.0
     helm:
       releaseName: team-a
       values: |
-        controlPlane:
-          statefulSet:
-            persistence:
-              volumeClaim:
-                enabled: true
-          service:
-            type: NodePort
+        service:
+          type: NodePort
   destination:
     server: https://kubernetes.default.svc
     namespace: team-a
