@@ -10,15 +10,17 @@ spec:
   source:
     repoURL: https://charts.loft.sh
     chart: vcluster
-    # We are using the latest 0.20.0+ schema now
     targetRevision: 0.20.0
     helm:
       releaseName: team-a
       values: |
         controlPlane:
+          statefulSet:
+            persistence:
+              volumeClaim:
+                enabled: true
           service:
-            spec:
-              type: NodePort
+            type: NodePort
   destination:
     server: https://kubernetes.default.svc
     namespace: team-a
