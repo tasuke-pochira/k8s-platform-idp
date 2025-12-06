@@ -10,16 +10,21 @@ spec:
   source:
     repoURL: https://charts.loft.sh
     chart: vcluster
-    # TARGETING THE LATEST STABLE VERSION
     targetRevision: 0.30.2
     helm:
       releaseName: team-a
       values: |
-        # In v0.20+, 'service' moved inside 'controlPlane'
         controlPlane:
           service:
             spec:
               type: NodePort
+        
+        # NEW: Sleep Mode Configuration
+        sleepMode:
+          enabled: true
+          # Sleep after 2 minutes of inactivity
+          autoSleep:
+            afterActivity: 2m
   destination:
     server: https://kubernetes.default.svc
     namespace: team-a
