@@ -14,8 +14,10 @@ spec:
     helm:
       releaseName: team-a
       values: |
-        service:
-          type: NodePort
+        controlPlane:
+          service:
+            spec:
+              type: NodePort
   destination:
     server: https://kubernetes.default.svc
     namespace: team-a
